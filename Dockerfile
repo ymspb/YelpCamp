@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY src/ ./
 
-RUN npm install --only=production
+RUN npm ci --omit=dev
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["node", "app.js"]
