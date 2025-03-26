@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mongo:5
+    container_name: mongodb_container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  web:
+    build: .
+    container_name: node_container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+      
+
+volumes:
+  mongo_data:
